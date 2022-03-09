@@ -2,6 +2,12 @@
 
 Inspired by the old Tibia name generator that was available before 2005/2006. Ported from [DAndrewBox/Old-Tibia-Name-Generator](https://github.com/DAndrewBox/Old-Tibia-Name-Generator).
 
+## Install
+
+```
+go install github.com/madsaune/tibianick@latest
+```
+
 ## Usage
 
 ```shell
