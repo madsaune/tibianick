@@ -20,6 +20,7 @@ tibianick [flags]
 --length,           length of nickname (world and title is not counted). Defaults to a random number between 5 and 12.
 --include-world,    include a random world in nickname
 --include-title,    include a random title in nickname
+--count,            number of result
 ```
 
 ## Examples
@@ -29,6 +30,12 @@ tibianick [flags]
 Sohepa
 (bash)$ tibianick --length 9
 Beqimayed
+(bash)$ tibianick --count 5
+Dogaxowej
+Hamapehiv
+Gofakiwiy
+Sefaremec
+Pegasarom
 (bash)$ tibianick --include-world
 Lijahopona of Peloria
 (bash)$ tibianick --include-title
