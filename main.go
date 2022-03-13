@@ -9,24 +9,24 @@ import (
 )
 
 var (
-	vocals       = []string{"a", "e", "i", "o", "u"}
-	consonants   = []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"}
-	titles       = []string{"Lord", "Dark", "Mistress", "King", "Queen", "Lady", "Mister", "Little", "Big"}
-	worlds       = []string{"Adra", "Alumbra", "Antica", "Ardera", "Astera", "Bastia", "Batabra", "Belobra", "Bona", "Cadebra", "Calmera", "Celebra", "Celesta", "Collabra", "Damora", "Descubra", "Dibra", "Epoca", "Famosa", "Fera", "Ferobra", "Firmera", "Gentebra", "Gladera", "Harmonia", "Havera", "Honbra", "Illusera", "Impulsa", "Inabra", "Kalibra", "Karna", "Libertabra", "Lobera", "Luminera", "Lutabra", "Marbera", "Marcia", "Menera", "Monza", "Mudabra", "Mykera", "Nefera", "Nossobra", "Ocebra", "Olima", "Ombra", "Optera", "Pacera", "Peloria", "Premia", "Quelibra", "Quintera", "Refugia", "Reinobra", "Seanera", "Secura", "Serdebra", "Solidera", "Suna", "Talera", "Tembra", "Thyria", "Trona", "Utobra", "Venebra", "Versa", "Visabra", "Vunira", "Wintera", "Wizera", "Xandebra", "Yonabra", "Zenobra", "Zuna", "Zunera"}
-	nameLength   int
-	includeWorld bool
-	includeTitle bool
+	vocals     = []string{"a", "e", "i", "o", "u"}
+	consonants = []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"}
+	titles     = []string{"Lord", "Dark", "Mistress", "King", "Queen", "Lady", "Mister", "Little", "Big"}
+	worlds     = []string{"Adra", "Alumbra", "Antica", "Ardera", "Astera", "Bastia", "Batabra", "Belobra", "Bona", "Cadebra", "Calmera", "Celebra", "Celesta", "Collabra", "Damora", "Descubra", "Dibra", "Epoca", "Famosa", "Fera", "Ferobra", "Firmera", "Gentebra", "Gladera", "Harmonia", "Havera", "Honbra", "Illusera", "Impulsa", "Inabra", "Kalibra", "Karna", "Libertabra", "Lobera", "Luminera", "Lutabra", "Marbera", "Marcia", "Menera", "Monza", "Mudabra", "Mykera", "Nefera", "Nossobra", "Ocebra", "Olima", "Ombra", "Optera", "Pacera", "Peloria", "Premia", "Quelibra", "Quintera", "Refugia", "Reinobra", "Seanera", "Secura", "Serdebra", "Solidera", "Suna", "Talera", "Tembra", "Thyria", "Trona", "Utobra", "Venebra", "Versa", "Visabra", "Vunira", "Wintera", "Wizera", "Xandebra", "Yonabra", "Zenobra", "Zuna", "Zunera"}
 )
 
 func main() {
 	rand.Seed(time.Now().UTC().UnixNano())
 
-	flag.IntVar(&nameLength, "length", getRandomInt(5, 12), "length of name")
-	flag.BoolVar(&includeWorld, "include-world", false, "include world in name")
-	flag.BoolVar(&includeTitle, "include-title", false, "include title in name")
+	length := flag.Int("length", getRandomInt(5, 12), "length of name")
+	includeWorld := flag.Bool("include-world", false, "include world in name")
+	includeTitle := flag.Bool("include-title", false, "include title in name")
+	count := flag.Int("count", 1, "number of result")
 	flag.Parse()
 
-	fmt.Println(createRandomName(nameLength, includeTitle, includeWorld))
+	for i := 0; i < *count; i += 1 {
+		fmt.Println(createRandomName(*length, *includeTitle, *includeWorld))
+	}
 }
 
 func getRandomInt(min, max int) int {
